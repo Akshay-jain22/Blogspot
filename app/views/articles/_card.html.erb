@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+    <% if article.image.attached? %>
+        <%= image_tag(url_for(article.image), class: "card-img-top shadow bg-white rounded", alt: "No image") %>
+    <% end %>
+    <div class="card-body">
+        <h3 class="card-title"><%= article.title %></h3>
+        <h5 class="card-subtitle mb-2 text-muted"><%= article.topic %></h5>
+        <p class="card-text">
+            <%= article.content[0, 80] %>
+            <% if article.content.length > 80 %>[...]<% end %>
+        </p>
+        <%= link_to 'Read More', article, class: 'text-white btn btn-primary' %>
+    </div>
+</div>

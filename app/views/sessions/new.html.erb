@@ -1,0 +1,15 @@
+<h1 class="text-center">Login</h1>
+<br/>
+
+<%= bootstrap_form_with(url: sessions_path, layout: :horizontal, remote: false) do |f| %>
+  <%= f.email_field :email, required: true%>
+  <%= f.password_field :password, required: true %>
+
+  <div class="text-center">
+    <%= f.primary "Login" %>
+  </div>
+<% end %>
+<br/>
+
+<%= link_to 'Back', articles_path, class:"btn btn-outline-info" %>
+<br/>

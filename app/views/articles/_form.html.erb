@@ -1,0 +1,25 @@
+<%= bootstrap_form_with(model: article, layout: :horizontal) do |form| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.text_field :title, required: true %>
+  <%= form.text_field :topic, required: true %>
+  <%= form.file_field :image, accept:'image/*' %>
+  <%= form.text_field :tags %>
+  <%= form.text_area :content, required: true %>
+  <%= form.check_box :public, label: "Visibility : Public" %>
+  <br/>
+
+  <div class="text-center">
+    <%= form.primary "Submit" %>
+  </div>
+<% end %>

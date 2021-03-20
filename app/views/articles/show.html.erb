@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <h1 class="display-4 text-center">
+    <%= @article.title %>
+  </h1>
+  <br/>
+
+  <% if @article.image.attached? %>
+    <div class="text-center">
+      <%= image_tag(@article.image, class: "img-fluid shadow-lg mb-5 rounded", style: "max-width:100%;", alt: "No Image Found") %>
+    </div>
+  <% end %>
+
+  <p class="lead">
+    <strong>Topic:</strong>
+    <%= @article.topic %>
+  </p>
+
+  <p class="lead">
+    <strong>Tags:</strong>
+    <%= @article.tags %>
+  </p>
+
+  <hr class="my-4">
+
+  <p class="lead">
+    <%= @article.content %>
+  </p>
+  
+  <br/>
+
+  <% unless request.format.to_sym == :pdf %>
+    <% if can? :edit, @article %>
+      <%= link_to "DOWNLOAD ARTICLE", article_path(@article, format: :pdf), class:"btn btn-outline-dark", target: "_blank" %> | 
+      <%= link_to 'Edit', edit_article_path(@article), class:"btn btn-outline-secondary" %> |
+      <%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %> | 
+    <% end %>
+    <%= link_to 'Back', articles_path, class:"btn btn-outline-info" %>
+  <% end %>
+</div>
+<br/>

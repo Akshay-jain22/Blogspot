@@ -1,0 +1,14 @@
+<h1 class="text-center">Articles</h1>
+<br/>
+
+<div class="mx-auto">
+  <div class="card-deck">
+    <% @articles.each do |article| %>
+      <div class="mt-3">
+        <%= render partial: 'card', locals: {article: article} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br/>
