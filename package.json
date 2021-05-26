@@ -17,5 +17,10 @@
   "devDependencies": {
     "webpack-dev-server": "^3.11.2",
     "bootstrap-sass": "^3.3.7"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "node ./bin/www"
   }
 }
